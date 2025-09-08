@@ -1,9 +1,8 @@
-/* eslint-disable */
-setTimeout(() => { //макро
+setTimeout(() => {
   console.log('timeOut');
 }, 0);
 
-console.log(1); //синх
+console.log(1);
 
 new Promise((resolve, reject) => {
   console.log('Promise');
@@ -29,6 +28,7 @@ console.log(4);
 setTimeout(() => {
   console.log('timeOut2');
 }, 0);
+
 
 
 

@@ -18,7 +18,7 @@ const obj = {
     0: 2,
 }
 
-console.log(obj["0"], obj[0]) //4
+console.log(obj["0"], obj[0]) //2, 2
 
 
 let y = 5

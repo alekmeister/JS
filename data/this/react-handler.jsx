@@ -13,6 +13,9 @@ export default class App extends React.Component {
     }
 }
 
+
+
+
 // решение
 // constructor(props) {
 //     super(props);
