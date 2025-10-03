@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/number-of-recent-calls/
 
+// TODO переписать на двухсвзяанный список, чтобы работало за o(1) ?
 
 class RecentCounter {
     constructor () {
