@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/validate-binary-search-tree/description/
 
+
 var isValidBST = function (root) {
 
     const stack = [[root, -Infinity, Infinity]]
