@@ -13,29 +13,21 @@ root.left.left = new TreeNode(4);
 root.left.right = new TreeNode(5);
 root.right.right = new TreeNode(6);
 
-
-function bfs(root) {
-    if(!root) return [];
-
-
-    const result = []
-    const queue = [root]
-
-    while(queue.length) {
-        let levelSize = queue.length
-
-        while(levelSize) {
-            const node = queue.shift()
-            result.push(node.val)
-
-            if(node?.left) queue.push(node.left);
-            if(node?.right) queue.push(node.right);
-
-            levelSize--
-        }
-    }
-    return result
+const dfs = (root) => {
+    if(!root) return null
+    //pre order
+    dfs(root.left)
+    //in - между обходом левого и правого. Для BST вернет элементы по возрастанию
+    dfs(root.right)
+    console.log(root.val)
+    //post - обработка на всплытии
+    return root
 }
+// Пример дерева:
+//       1
+//      / \
+//     2   3
+//    / \   \
+//   4   5   6
 
-
-console.log(bfs(root))
+dfs(root)
