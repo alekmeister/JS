@@ -49,3 +49,38 @@ var isPalindrome = function(listHead) {
     }
     return true
 };
+
+var isPalindrome = function (listHead) {
+
+    let slow = listHead
+    let fast = listHead
+
+    while (fast?.next) {
+        slow = slow.next
+        fast = fast.next.next
+    }
+
+    let current = slow
+    let prev = null
+    let tmp = null
+
+    while(current) {
+        tmp = current.next
+        current.next = prev
+        prev = current
+        current = tmp
+    }
+
+
+    let leftP = listHead
+    let rightP = prev
+
+    while(leftP && rightP) {
+        if(leftP.val !== rightP.val) return false;
+        leftP = leftP.next
+        rightP = rightP.next
+    }
+
+    return true
+
+};
