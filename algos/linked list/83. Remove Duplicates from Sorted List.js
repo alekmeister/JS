@@ -1,18 +1,16 @@
-var deleteDuplicates = function(head) {
-    let firstPointer = head
-    let secondPointer = head
-    if(!head?.next) {
-        return head
-    }
-    while(secondPointer) {
-        if(firstPointer.val === secondPointer.val) {
-            secondPointer = secondPointer.next
-        } else {
-            firstPointer.next = secondPointer
-            firstPointer = secondPointer
+var deleteDuplicates = function (head) {
+    if (!head) return head;
+
+    let leftP = head
+    let rightP = head.next
+    while (rightP) {
+        if (rightP.val !== leftP.val) {
+            leftP.next = rightP
+            leftP = rightP
         }
+        rightP = rightP.next
     }
-    firstPointer.next = null
+    leftP.next = null
     return head
 };
 
