@@ -29,7 +29,10 @@ var removeNthFromEnd = function(head, n) {
     return dummy.next
 };
 
-const data = new ListNode(1, null)
 
-removeNthFromEnd(data,1)
-console.log(removeNthFromEnd(data,1)  )
+
+const data = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))))
+
+
+
+
