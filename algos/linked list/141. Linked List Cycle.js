@@ -16,3 +16,15 @@ var hasCycle = function(head) {
     }
     return false
 };
+
+var hasCycle = function(head) {
+
+    let current = head
+
+    while(current) {
+        if(current.isVisited) return true;
+        current.isVisited = true
+        current = current.next
+    }
+    return false
+};
