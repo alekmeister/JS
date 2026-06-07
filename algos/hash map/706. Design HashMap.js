@@ -6,6 +6,7 @@ class ListNode {
         this.key = key
         this.val = val
         this.next = next
+
     }
 }
 class MyHashMap {
