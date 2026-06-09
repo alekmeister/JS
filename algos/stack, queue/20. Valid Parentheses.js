@@ -7,19 +7,21 @@ const bracketsMap = {
     '[': ']'
 }
 
+
 var isValid = function (s) {
     const stack = []
 
-    for (char of s) {
-        if(char in bracketsMap) { // открывающая
+    for (let char of s) { // )
+        if(char in bracketsMap) {
             stack.push(char)
-            continue
-        }
-        const last = stack.pop()
-        if(char !== bracketsMap[last]) { // закрывающая
-            return false
+        } else {
+            const lastStackEl = stack.pop() // (
+            if(bracketsMap[lastStackEl] !== char) return false;
         }
     }
 
-    return stack.length === 0
+    return !stack.length
+
 };
+
+isValid('()')
