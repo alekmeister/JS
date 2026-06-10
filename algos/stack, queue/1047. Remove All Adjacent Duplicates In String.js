@@ -6,12 +6,15 @@
 var removeDuplicates = function(s) {
     const stack = []
 
-    for (char of s) {
-        if(char === stack.at(-1)) {
+    for (let char of s) {
+        const lastStackEl = stack.at(-1)
+
+        if(lastStackEl === char) {
             stack.pop()
-        } else {
-            stack.push(char)
+            continue
         }
+        stack.push(char)
     }
-    return stack.join('')
+
+    return stack.join("")
 };
