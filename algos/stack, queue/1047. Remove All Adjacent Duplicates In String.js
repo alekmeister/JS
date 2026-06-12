@@ -5,7 +5,6 @@
  */
 var removeDuplicates = function(s) {
     const stack = []
-
     for (let char of s) {
         const lastStackEl = stack.at(-1)
 
