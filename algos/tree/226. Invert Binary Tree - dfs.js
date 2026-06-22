@@ -11,3 +11,20 @@ var invertTree = function(root) {
 
     return root
 };
+
+var invertTree2 = function (root) {
+
+    const stack = [root];
+
+    while (stack.length) {
+        const node = stack.pop();
+
+        if (!node) continue;
+
+        [node.left, node.right] = [node.right, node.left];
+
+        stack.push(node.left, node.right);
+    }
+
+    return root;
+};
