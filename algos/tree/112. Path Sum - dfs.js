@@ -11,5 +11,20 @@ var hasPathSum = function (root, targetSum) {
     return hasPathSum(root.left, remaining) || hasPathSum(root.right, remaining);
 };
 
-// TODO через стэк, https://leetcode.com/problems/same-tree/ - эту задачу
+var hasPathSum2 = function (root, targetSum) {
+    if (!root) return false;
+
+    const stack = [[root, targetSum - root.val]];
+
+    while (stack.length) {
+        const [node, remaining] = stack.pop();
+
+        if (!node.left && !node.right && remaining === 0) return true;
+
+        if (node.left) stack.push([node.left, remaining - node.left.val]);
+        if (node.right) stack.push([node.right, remaining - node.right.val]);
+    }
+
+    return false;
+};
 
