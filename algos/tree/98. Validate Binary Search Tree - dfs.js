@@ -5,16 +5,19 @@ var isValidBST = function (root) {
 
     const stack = [[root, -Infinity, Infinity]]
 
-    while (stack.length) {
-        const [node, minR, maxR] = stack.pop()
+    while(stack.length) {
+        const [node, minRange, maxRange] = stack.pop()
 
-        if (!node) continue;
+        if(!node) continue;
 
-        if (node.val <= minR || node.val >= maxR) return false;
+        if(node.val <= minRange || node.val >= maxRange) return false;
 
-        stack.push([node.left, minR, node.val])
-        stack.push([node.right, node.val, maxR])
+
+        stack.push([node.left, minRange, node.val])
+        stack.push([node.right, node.val, maxRange])
+
     }
+
 
     return true
 };
