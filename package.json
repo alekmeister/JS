@@ -1,5 +1,6 @@
 {
   "name": "yandex",
+  "type": "module",
   "version": "1.0.0",
   "scripts": {
     "start": "node algo.js < data.txt"

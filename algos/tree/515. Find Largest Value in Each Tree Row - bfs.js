@@ -1,27 +1,29 @@
 //https://leetcode.com/problems/find-largest-value-in-each-tree-row/
+import {buildTree} from "./utils.js";
+
+const tree = buildTree([1,2,3]);
 
 var largestValues = function (root) {
     if (!root) return []
 
     const queue = [root]
     const result = []
-    while (queue.length) {
 
-        let levelSize = queue.length
-        let levelResult = -Infinity
+    while(queue.length) {
+        let levelMax = -Infinity
+        const levelSize = queue.length
 
-        while (levelSize) {
+        for(let i = 0; i < levelSize; i++) {
             const node = queue.shift()
-            levelResult = Math.max(node.val, levelResult)
 
-            if (node?.left) queue.push(node.left);
-            if (node?.right) queue.push(node.right);
+            levelMax = Math.max(node.val, levelMax)
 
-            levelSize--
+            if(node?.left) queue.push(node.left)
+            if(node?.right) queue.push(node.right)
         }
-
-        result.push(levelResult)
-
+        result.push(levelMax)
     }
+
     return result
 };
+
