@@ -1,28 +1,24 @@
 
-var rightSideView = function(root) {
-    if(!root) return [];
+var rightSideView = function (root) {
+    if (!root) return [];
 
     const queue = [root]
     const result = []
 
-    while(queue.length) {
-        const lvlResult = []
-        let lvlLength = queue.length
+    while (queue.length) {
+        const levelSize = queue.length
+        let lastNodeVal = null
 
-        while(lvlLength) {
+        for (let i = 0; i < levelSize; i++) {
             const node = queue.shift()
 
-            lvlResult.push(node.val)
+            lastNodeVal = node.val
 
-            if (node?.left) queue.push(node.left);
-            if (node?.right) queue.push(node.right);
-
-            lvlLength--
+            if (node?.left) queue.push(node.left)
+            if (node?.right) queue.push(node.right)
         }
-
-        result.push(lvlResult.at(-1))
+        result.push(lastNodeVal)
     }
     return result
 };
-
 
