@@ -1,24 +1,23 @@
 // https://leetcode.com/problems/deepest-leaves-sum/
 
-var deepestLeavesSum = function(root) {
+var deepestLeavesSum = function (root) {
 
     const queue = [root]
-    let resultSum = 0 //5
-    while(queue.length) {
-        let lvlLength = queue.length
-        resultSum = 0
-        while(lvlLength) {//2 1
+    let result = 0
+    while (queue.length) {
+        const lvlSize = queue.length
+        let levelSum = 0
+
+        for (let i = 0; i < lvlSize; i++) {
             const node = queue.shift()
 
-            resultSum += node.val
+            levelSum +=node.val
 
-            if(node?.left) queue.push(node.left);
-            if(node?.right) queue.push(node.right);
-
-            lvlLength--
+            if (node?.left) queue.push(node.left)
+            if (node?.right) queue.push(node.right)
         }
 
+        result = levelSum
     }
-
-    return resultSum
-};
+    return result
+}
