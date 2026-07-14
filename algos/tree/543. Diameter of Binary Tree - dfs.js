@@ -2,19 +2,27 @@
 
 
 
-var diameterOfBinaryTree = function(root) {
-    let result = 0
+import {buildTree} from "./utils.js";
 
-    function maxDepth(root){
-        if(!root) return 0;
+var diameterOfBinaryTree = function (root) {
+    let d = 0
+
+    function maxDepth(root) {
+        if (!root) return 0;
 
         let l = maxDepth(root.left)
         let r = maxDepth(root.right)
 
-        result = Math.max(result, l+r)
-        return Math.max(l,r) + 1
 
+        d = Math.max(l+r, d)
+        return Math.max(l,r) + 1
     }
+
     maxDepth(root)
-    return result
+    return d
 };
+
+
+diameterOfBinaryTree(buildTree([1,2,3,4,5]))
+
+
