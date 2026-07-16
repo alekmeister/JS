@@ -24,31 +24,35 @@ var zigzagLevelOrder = function(root) {
     }
     return res
 };
+
+
+
 // получше
-var zigzagLevelOrder2 = function(root) {
+var zigzagLevelOrder2 = function (root) {
     if (!root) return [];
 
-    const result = [];
     const queue = [root];
-    let isReverse = true;
+    const result = [];
 
-    while (queue.length > 0) {
-        const levelSize = queue.length;
-        const currentLevel = new Array(levelSize);
+    let isDefaultOrder = true;
 
-        for (let i = 0; i < levelSize; i++) {
+    while (queue.length) {
+        const lvlSize = queue.length;
+        const lvlResult = new Array(lvlSize);
+
+        for (let i = 0; i < lvlSize; i++) {
             const node = queue.shift();
-            const index = isReverse ? i : levelSize - 1 - i;
-            currentLevel[index] = node.val;
+
+            const index = isDefaultOrder ? i : lvlSize - i - 1;
+            lvlResult[index] = node.val;
 
             if (node.left) queue.push(node.left);
             if (node.right) queue.push(node.right);
         }
 
-        result.push(currentLevel);
-        isReverse = !isReverse;
+        isDefaultOrder = !isDefaultOrder;
+        result.push(lvlResult);
     }
 
     return result;
 };
-
