@@ -11,40 +11,49 @@ class Trie {
     }
 
     insert(word) {
-        let node = this.root
-        for(let char of word) {
-            if(char in node.children) {
-                node = node.children[char]
-            } else {
-                node.children[char] = new TrieNode()
-                node = node.children[char]
-            }
+        let currentNode = this.root
 
+        for (let char of word) {
+            if (!currentNode.children[char]) {
+                currentNode.children[char] = new TrieNode()
+            }
+            currentNode = currentNode.children[char]
         }
-        node.isEnd = true
+        currentNode.isEnd = true
+
     }
 
     search(word) {
-        let node = this.root
-        for(let char of word) {
-            if(char in node.children) {
-                node = node.children[char]
-            } else {
-                return false
-            }
+        let currentNode = this.root
+        for (let char of word) {
+            if (!currentNode.children[char]) return false;
+            currentNode = currentNode.children[char]
         }
-        return node.isEnd
+        return currentNode.isEnd
+
     }
 
     startsWith(prefix) {
-        let node = this.root
-        for(let char of prefix) {
-            if(char in node.children) {
-                node = node.children[char]
-            } else {
-                return false
-            }
+        let currentNode = this.root
+        for (let char of prefix) {
+            if (!currentNode.children[char]) return false;
+            currentNode = currentNode.children[char]
         }
         return true
     }
+
 }
+
+
+const trie = new Trie();
+trie.insert("app");
+trie.insert("apple");
+// trie.search("apple");   // return True
+// trie.search("app");     // return False
+// trie.startsWith("app"); // return True
+// trie.insert("app");
+console.dir(trie, {depth:null})
+trie.search("app");     // return True
+
+//console.log(obj.search('word'), obj.search('work'))
+//console.dir(obj, {depth:null})
