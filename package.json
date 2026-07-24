@@ -1,5 +1,5 @@
 {
-  "name": "yandex",
+  "name": "js",
   "type": "module",
   "version": "1.0.0",
   "scripts": {
@@ -9,6 +9,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@datastructures-js/heap": "^4.3.7",
     "live-server": "^1.2.2"
   }
 }

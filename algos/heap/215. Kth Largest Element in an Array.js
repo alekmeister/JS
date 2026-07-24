@@ -2,15 +2,19 @@
 
 
 
-var findKthLargest = function (nums, k) {
-    const heap = new Heap((a, b) => b - a, nums).fix()
-    while(k - 1) {
-        heap.extractRoot()
-        k--
-    }
+import {MinHeap} from "@datastructures-js/heap";
 
-    return heap.root()
+var findKthLargest = function(nums, k) {
+    const heap = new MinHeap();
+
+    for (const n of nums) {
+        heap.insert(n);
+        if (heap.size() > k) heap.extractRoot();
+    }
+    return heap.root();
 };
+
+
 
 // оптимальнее
 var findKthLargest2 = function(nums, k) {
