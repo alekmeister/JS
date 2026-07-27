@@ -2,7 +2,7 @@
 
 
 
-import {MinHeap} from "@datastructures-js/heap";
+import {Heap, MinHeap} from "@datastructures-js/heap";
 
 var findKthLargest = function(nums, k) {
     const heap = new MinHeap();
